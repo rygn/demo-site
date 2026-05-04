@@ -1317,8 +1317,29 @@
     });
   });
 
-  submitBtn && submitBtn.addEventListener('click', () => {
+  submitBtn && submitBtn.addEventListener('click', async () => {
     if (!selectedRating) return;
+
+    const message = document.getElementById('reviewText').value.trim();
+    const name = document.getElementById('reviewName').value.trim();
+
+    submitBtn.textContent = 'Sending...';
+    submitBtn.disabled = true;
+
+    try {
+      await fetch('https://formspree.io/f/mzdoeevo', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          rating: '★'.repeat(selectedRating) + ' (' + selectedRating + '/5)',
+          name: name || 'Anonymous',
+          message: message || '(no message left)'
+        })
+      });
+    } catch(e) {
+      // still show thanks even if network fails
+    }
+
     thanksStars.textContent = '★'.repeat(selectedRating);
     reviewForm.style.display = 'none';
     document.getElementById('starRow').style.display = 'none';
