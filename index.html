@@ -423,6 +423,8 @@
     cursor: default;
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s;
     border: 1px solid rgba(0,0,0,0.04);
+    display: flex;
+    flex-direction: column;
   }
 
   .package-card:hover {
@@ -455,12 +457,6 @@
     color: var(--sand-dark);
     border-radius: 100px;
     margin-bottom: 1.5rem;
-  }
-
-  .pkg-icon {
-    font-size: 2rem;
-    margin-bottom: 1.25rem;
-    display: block;
   }
 
   .pkg-name {
@@ -504,6 +500,17 @@
     flex-direction: column;
     gap: 0.75rem;
     margin-bottom: 2rem;
+    flex: 1;
+  }
+
+  .pkg-icon {
+    font-size: 2rem;
+    margin-bottom: 1.25rem;
+    display: block;
+    width: 2.5rem;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    text-align: center;
   }
 
   .pkg-feature {
@@ -1073,8 +1080,8 @@
 
     <!-- Tier 3: Photos + Video + Floor Plan + 3D (featured) -->
     <div class="package-card featured reveal delay-3">
-      <div class="pkg-badge">Most Popular</div>
       <span class="pkg-icon">🎬</span>
+      <div class="pkg-badge">Tier 3 — Most Popular</div>
       <h3 class="pkg-name">Signature</h3>
       <div class="pkg-price">Starting at <span style="display:block; font-size:1.8rem; color: var(--white);">$549</span></div>
       <p class="pkg-desc">The complete indoor package — stunning photos, a cinematic listing video, floor plan, and 3D tour all in one shoot.</p>
